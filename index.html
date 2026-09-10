@@ -310,7 +310,8 @@
           </div>
 
           <div class="bg-white p-8 text-slate-950 sm:p-12 lg:p-14 dark:bg-slate-950 dark:text-white">
-            <form id="contact-form" class="space-y-5" novalidate>
+            <form id="contact-form" action="https://formspree.io/f/xeaqnqpy" method="POST" class="space-y-5" novalidate>
+              <input type="hidden" name="_subject" value="Nuevo mensaje desde el portfolio de William Rodriguez" />
               <div class="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label for="name" class="text-sm font-semibold">Nombre</label>
@@ -325,8 +326,8 @@
                 <label for="message" class="text-sm font-semibold">Mensaje</label>
                 <textarea id="message" name="message" rows="5" required placeholder="Cuéntame brevemente en qué estás trabajando..." class="mt-2 w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 dark:border-slate-800 dark:bg-slate-900 dark:placeholder:text-slate-600"></textarea>
               </div>
-              <button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:ring-offset-2 dark:focus:ring-offset-slate-950">Preparar mensaje <span aria-hidden="true">→</span></button>
-              <p id="form-note" class="text-center text-xs leading-5 text-slate-500 dark:text-slate-400">Formulario preparado para conectar con tu correo o un servicio de formularios.</p>
+              <button id="form-submit" type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:ring-offset-2 disabled:cursor-wait disabled:opacity-70 dark:focus:ring-offset-slate-950">Enviar mensaje <span aria-hidden="true">→</span></button>
+              <p id="form-note" aria-live="polite" class="text-center text-xs leading-5 text-slate-500 dark:text-slate-400">Tus datos se enviarán de forma segura mediante Formspree.</p>
             </form>
           </div>
         </div>
@@ -356,17 +357,41 @@
 
       revealItems.forEach((item) => revealObserver.observe(item));
 
-      document.getElementById("contact-form").addEventListener("submit", (event) => {
+      document.getElementById("contact-form").addEventListener("submit", async (event) => {
         event.preventDefault();
         const form = event.currentTarget;
         const note = document.getElementById("form-note");
+        const submitButton = document.getElementById("form-submit");
         if (!form.checkValidity()) {
           form.reportValidity();
           return;
         }
-        note.textContent = "El formulario está validado. Conecta aquí tu correo o servicio de formularios para activar el envío.";
-        note.classList.remove("text-slate-500", "dark:text-slate-400");
-        note.classList.add("text-indigo-600", "dark:text-indigo-300");
+
+        submitButton.disabled = true;
+        submitButton.firstChild.textContent = " Enviando ";
+        note.textContent = "Enviando tu mensaje...";
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+
+          if (!response.ok) throw new Error("Formspree request failed");
+
+          form.reset();
+          note.textContent = "Mensaje enviado correctamente. Gracias por escribirme.";
+          note.classList.remove("text-slate-500", "dark:text-slate-400");
+          note.classList.add("text-emerald-600", "dark:text-emerald-300");
+        } catch (error) {
+          note.textContent = "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por LinkedIn.";
+          note.classList.remove("text-slate-500", "dark:text-slate-400");
+          note.classList.add("text-rose-600", "dark:text-rose-300");
+        } finally {
+          submitButton.disabled = false;
+          submitButton.firstChild.textContent = " Enviar mensaje ";
+        }
       });
     </script>
   </body>
