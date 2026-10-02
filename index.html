@@ -1,398 +1,159 @@
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Portfolio profesional de William Adrian Rodriguez Pantoja, Ingeniero Informático especializado en Inteligencia Artificial."
-    />
-    <meta name="theme-color" content="#070b14" />
-    <title>William Adrian Rodriguez Pantoja | Ingeniería e IA</title>
-
+    <meta name="description" content="William Rodriguez Pantoja, Software Engineer en Segovia. 11 años de experiencia con Python, .NET, APIs y automatización en finanzas y logística." />
+    <meta name="theme-color" content="#f8fafc" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="William Rodriguez Pantoja | Software Engineer" />
+    <meta property="og:description" content="Desarrollo full stack y backend con Python y .NET. Integración de sistemas, APIs y automatización de datos." />
+    <meta property="og:url" content="https://warodriguez18.github.io/Landing-Page/" />
+    <title>William Rodriguez Pantoja | Software Engineer</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./assets/styles.css" />
     <script>
-      tailwind = {
-        config: {
-          darkMode: "class",
-          theme: {
-            extend: {
-              fontFamily: {
-                sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-              },
-            },
-          },
-        },
-      };
-
       (() => {
-        const savedTheme = localStorage.getItem("portfolio-theme");
+        document.documentElement.classList.add("js");
+        let theme;
+        try { theme = localStorage.getItem("portfolio-theme"); } catch {}
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-          document.documentElement.classList.add("dark");
-        }
+        const dark = theme === "dark" || (theme !== "light" && prefersDark);
+        document.documentElement.classList.toggle("dark", dark);
+        document.querySelector('meta[name="theme-color"]').content = dark ? "#070b14" : "#f8fafc";
       })();
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <style>
-      [x-cloak] {
-        display: none !important;
-      }
-
-      :root {
-        color-scheme: light;
-        --page-bg: #f8fafc;
-        --page-text: #0f172a;
-        --muted-text: #475569;
-        --border-color: rgba(148, 163, 184, 0.28);
-        --surface: rgba(255, 255, 255, 0.78);
-      }
-
-      html.dark {
-        color-scheme: dark;
-        --page-bg: #070b14;
-        --page-text: #f8fafc;
-        --muted-text: #a8b4c7;
-        --border-color: rgba(148, 163, 184, 0.18);
-        --surface: rgba(15, 23, 42, 0.7);
-      }
-
-      body {
-        background: var(--page-bg);
-        color: var(--page-text);
-        transition: background-color 300ms ease, color 300ms ease;
-      }
-
-      .page-grid {
-        background-image: linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
-        background-size: 42px 42px;
-        mask-image: linear-gradient(to bottom, black 0%, transparent 78%);
-      }
-
-      .hero-glow {
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.22), transparent 68%);
-        filter: blur(10px);
-      }
-
-      .glass {
-        background: var(--surface);
-        border: 1px solid var(--border-color);
-        backdrop-filter: blur(18px);
-      }
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(18px);
-        transition: opacity 700ms ease, transform 700ms ease;
-      }
-
-      .reveal.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .text-muted {
-        color: var(--muted-text);
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto !important;
-        }
-
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-
-        .reveal {
-          opacity: 1;
-          transform: none;
-        }
-      }
-    </style>
+    <script src="./assets/main.js" defer></script>
   </head>
-
-  <body
-    x-data="{
-      darkMode: document.documentElement.classList.contains('dark'),
-      toggleTheme() {
-        this.darkMode = !this.darkMode;
-        document.documentElement.classList.toggle('dark', this.darkMode);
-        localStorage.setItem('portfolio-theme', this.darkMode ? 'dark' : 'light');
-      }
-    }"
-    x-init="$watch('darkMode', value => document.documentElement.classList.toggle('dark', value))"
-    class="overflow-x-hidden antialiased"
-  >
-    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      <div class="page-grid absolute inset-0"></div>
-      <div class="hero-glow absolute -left-40 -top-40 h-[32rem] w-[32rem] rounded-full"></div>
-      <div class="absolute right-[-18rem] top-[28rem] h-[32rem] w-[32rem] rounded-full bg-cyan-400/10 blur-3xl"></div>
-    </div>
-
-    <header class="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
-      <nav
-        class="glass mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3 shadow-lg shadow-slate-950/5 dark:shadow-black/20"
-        aria-label="Navegación principal"
-      >
-        <a href="#inicio" class="group flex items-center gap-3" aria-label="Ir al inicio">
-          <span
-            class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-950 text-sm font-bold text-white transition-transform group-hover:rotate-6 dark:bg-white dark:text-slate-950"
-            >WR</span
-          >
-          <span class="hidden text-sm font-semibold tracking-tight sm:block">William Rodriguez</span>
-        </a>
-
-        <div class="hidden items-center gap-7 text-sm font-medium text-muted md:flex">
-          <a class="transition-colors hover:text-indigo-500 dark:hover:text-indigo-300" href="#sobre-mi">Sobre mí</a>
-          <a class="transition-colors hover:text-indigo-500 dark:hover:text-indigo-300" href="#proyectos">Proyectos</a>
-          <a class="transition-colors hover:text-indigo-500 dark:hover:text-indigo-300" href="#contacto">Contacto</a>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header">
+      <nav class="navigation glass" aria-label="Navegación principal">
+        <a class="brand" href="#inicio" aria-label="William Rodriguez, ir al inicio"><span class="brand-mark" aria-hidden="true">WR</span><span class="brand-name">William Rodriguez</span></a>
+        <div class="nav-actions">
+          <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Activar modo oscuro" aria-pressed="false" title="Activar modo oscuro">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" /></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" /></svg>
+          </button>
+          <button class="icon-button menu-toggle" id="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg></button>
         </div>
-
-        <button
-          type="button"
-          @click="toggleTheme()"
-          class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200/70 text-slate-600 transition hover:border-indigo-400 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 dark:border-slate-700/70 dark:text-slate-300 dark:hover:border-indigo-400 dark:hover:text-indigo-300"
-          :aria-label="darkMode ? 'Activar modo claro' : 'Activar modo oscuro'"
-          :title="darkMode ? 'Activar modo claro' : 'Activar modo oscuro'"
-        >
-          <svg x-show="!darkMode" x-cloak class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
-          </svg>
-          <svg x-show="darkMode" x-cloak class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
-          </svg>
-        </button>
+        <div class="nav-links" id="nav-links"><a href="#sobre-mi">Sobre mí</a><a href="#experiencia">Experiencia</a><a href="#competencias">Tecnologías</a><a href="#proyectos">Proyectos</a><a href="#contacto">Contacto</a></div>
       </nav>
     </header>
-
-    <main id="inicio">
-      <section class="relative mx-auto flex min-h-screen max-w-6xl items-center px-6 pb-20 pt-36 lg:px-8 lg:pt-40">
-        <div class="grid w-full items-center gap-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
-          <div class="reveal">
-            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-600 dark:text-indigo-300">
-              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]"></span>
-              Disponible para nuevos retos
-            </div>
-
-            <p class="mb-4 text-sm font-medium tracking-wide text-muted">Ingeniería informática · Inteligencia artificial</p>
-            <h1 class="max-w-4xl text-5xl font-bold leading-[0.98] tracking-[-0.05em] sm:text-7xl lg:text-[5.6rem]">
-              William Adrian<br />
-              <span class="bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-400 bg-clip-text text-transparent">Rodriguez Pantoja.</span>
-            </h1>
-            <p class="mt-8 max-w-2xl text-lg leading-8 text-muted sm:text-xl">
-              Transformo ideas y problemas complejos en soluciones digitales claras, aprendiendo y aplicando el potencial de la inteligencia artificial.
-            </p>
-
-            <div class="mt-10 flex flex-col gap-3 sm:flex-row">
-              <a href="#proyectos" class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-950 px-5 py-3.5 text-sm font-semibold text-white shadow-xl shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 dark:bg-white dark:text-slate-950 dark:hover:bg-indigo-200">
-                Ver proyectos
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-              </a>
-              <a href="#contacto" class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300/80 px-5 py-3.5 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-indigo-400 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 dark:border-slate-700 dark:hover:border-indigo-400 dark:hover:text-indigo-300">
-                Hablemos
-              </a>
-            </div>
-
-            <div class="mt-12 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-muted">
-              <span class="font-medium">Explorando constantemente:</span>
-              <span class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-indigo-500"></span>IA</span>
-              <span class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-indigo-500"></span>Web</span>
-              <span class="flex items-center gap-2"><span class="h-1 w-1 rounded-full bg-indigo-500"></span>Datos</span>
-            </div>
-          </div>
-
-          <div class="reveal relative mx-auto w-full max-w-sm lg:max-w-none" style="transition-delay: 150ms">
-            <div class="absolute -inset-5 rounded-[2rem] bg-gradient-to-br from-indigo-500/20 via-transparent to-cyan-400/20 blur-2xl"></div>
-            <div class="glass relative overflow-hidden rounded-[2rem] p-6 shadow-2xl shadow-indigo-950/10 dark:shadow-black/30 sm:p-8">
-              <div class="flex items-center justify-between border-b border-slate-200/70 pb-5 dark:border-slate-700/60">
-                <span class="font-mono text-xs text-muted">profile.card / 01</span>
-                <span class="flex items-center gap-2 text-xs font-medium text-emerald-500"><span class="h-2 w-2 rounded-full bg-emerald-400"></span>online</span>
-              </div>
-              <div class="flex flex-col items-center py-10 text-center">
-                <div class="relative flex h-32 w-32 items-center justify-center rounded-[2rem] bg-gradient-to-br from-indigo-500 via-violet-500 to-cyan-400 text-4xl font-bold text-white shadow-xl shadow-indigo-500/25">
-                  WR
-                  <div class="absolute -bottom-2 -right-2 flex h-9 w-9 items-center justify-center rounded-xl border-4 border-[var(--page-bg)] bg-emerald-400 text-slate-950" aria-label="Disponible">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m5 12 4 4L19 6"></path></svg>
-                  </div>
-                </div>
-                <h2 class="mt-7 text-xl font-bold tracking-tight">Ingeniero Informático</h2>
-                <p class="mt-2 text-sm leading-6 text-muted">Especializado en IA<br />y soluciones digitales.</p>
-              </div>
-              <div class="grid grid-cols-2 gap-3 border-t border-slate-200/70 pt-5 dark:border-slate-700/60">
-                <div class="rounded-xl bg-slate-100/70 p-3 dark:bg-slate-800/60"><p class="text-xs text-muted">Enfoque</p><p class="mt-1 text-sm font-semibold">Innovación</p></div>
-                <div class="rounded-xl bg-slate-100/70 p-3 dark:bg-slate-800/60"><p class="text-xs text-muted">Mentalidad</p><p class="mt-1 text-sm font-semibold">Aprendizaje</p></div>
-              </div>
-            </div>
-          </div>
+    <main id="contenido" tabindex="-1">
+      <section class="hero container" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow hero-eyebrow"><span class="status-dot" aria-hidden="true"></span> Software Engineer · Segovia, España</p>
+          <h1 id="hero-title">William<br /><span class="gradient-text">Rodriguez Pantoja.</span></h1>
+          <p class="hero-role">Full stack y backend.<br />Python, .NET e integración de sistemas.</p>
+          <p class="hero-description">11 años de experiencia desarrollando software y automatizando procesos en los sectores financiero y logístico. Del análisis de requisitos al soporte en producción.</p>
+          <div class="hero-buttons"><a class="button button-primary" href="#proyectos">Explorar proyectos <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="#contacto">Hablemos <span aria-hidden="true">→</span></a></div>
+          <div class="hero-facts" aria-label="Áreas de experiencia"><span>APIs y microservicios</span><span>Datos y ETL</span><span>Coordinación técnica</span></div>
+        </div>
+        <aside class="profile-panel glass" aria-label="Perfil profesional resumido">
+          <div class="panel-heading"><span>Perfil profesional</span><span class="panel-number">01</span></div>
+          <div class="profile-monogram" aria-hidden="true">WR<span>↗</span></div>
+          <h2>Ingeniería aplicada<br />a problemas reales.</h2><p>Ingeniero en Tecnologías de la Información. Desarrollo, integración y automatización.</p>
+          <dl class="profile-details"><div><dt>Actualmente</dt><dd>Full-Stack Developer <span>GLS Spain · En remoto</span></dd></div><div><dt>Experiencia</dt><dd>Finanzas y logística</dd></div><div><dt>En proyectos personales</dt><dd>Desarrollo asistido por IA</dd></div></dl>
+          <a class="text-link" href="#experiencia">Conocer mi trayectoria <span aria-hidden="true">→</span></a>
+        </aside>
+      </section>
+      <section class="section container about" id="sobre-mi" aria-labelledby="about-title">
+        <div class="section-heading"><p class="eyebrow">01 / Sobre mí</p><h2 id="about-title">Conectar sistemas.<br />Simplificar procesos.</h2></div>
+        <div class="about-copy">
+          <p>Mi trabajo combina desarrollo de software, integración de sistemas y automatización de datos. He participado en proyectos para los sectores financiero y logístico con Python, .NET y procesos ETL.</p>
+          <p>Tengo experiencia en coordinación técnica de equipos: análisis de requisitos, planificación de entregas, gestión de dependencias, pruebas de aceptación y despliegues, hasta la estabilización en producción.</p>
+          <p>En mis proyectos personales aplico IA generativa al desarrollo. Uso OpenAI Codex para análisis, programación, revisión, pruebas y documentación; sigo aprendiendo Claude Code, Prompt Engineering, Agent Skills y flujos agénticos.</p>
+          <div class="about-note"><span aria-hidden="true">↳</span><p>Construir soluciones útiles, con atención a los datos, los procesos y las personas que las usan.</p></div>
         </div>
       </section>
-
-      <section id="sobre-mi" class="mx-auto max-w-6xl scroll-mt-28 px-6 py-24 lg:px-8 lg:py-32">
-        <div class="reveal grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-500">01 / Sobre mí</p>
-            <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Curiosidad con dirección.</h2>
-          </div>
-          <div class="max-w-3xl space-y-5 text-lg leading-8 text-muted">
-            <p>Soy William Adrian Rodriguez Pantoja, Ingeniero Informático con especial interés en la inteligencia artificial y en la manera en que la tecnología puede resolver problemas reales.</p>
-            <p>Estoy en un proceso constante de aprendizaje: profundizo en IA, exploro distintos lenguajes de programación y busco conectar la parte técnica con soluciones simples, útiles y fáciles de entender.</p>
-            <p>Me motiva construir, experimentar y seguir creciendo junto a equipos y personas que valoren la innovación, el pensamiento crítico y la mejora continua.</p>
-            <div class="flex flex-wrap gap-2 pt-3">
-              <span class="rounded-full border border-slate-300/80 px-3 py-1.5 text-sm dark:border-slate-700">Inteligencia artificial</span>
-              <span class="rounded-full border border-slate-300/80 px-3 py-1.5 text-sm dark:border-slate-700">Desarrollo web</span>
-              <span class="rounded-full border border-slate-300/80 px-3 py-1.5 text-sm dark:border-slate-700">Automatización</span>
-              <span class="rounded-full border border-slate-300/80 px-3 py-1.5 text-sm dark:border-slate-700">Aprendizaje continuo</span>
+      <section class="section container" id="experiencia" aria-labelledby="experience-title">
+        <div class="section-top"><div class="section-heading"><p class="eyebrow">02 / Experiencia</p><h2 id="experience-title">De finanzas a logística.</h2></div><p class="section-intro">Desarrollo, automatización y coordinación técnica a lo largo del ciclo de vida del software.</p></div>
+        <div class="timeline">
+          <article class="experience-item">
+            <div class="experience-meta"><p class="date">Jul. 2025 — Actualidad</p><p>Madrid, España · En remoto</p></div>
+            <div class="experience-content"><div class="job-heading"><h3>GLS Spain</h3><span class="badge badge-current">Actual</span></div><p class="job-role">Developer Full-Stack Innovation and Development</p>
+              <ul><li>Desarrollo y mantenimiento de aplicaciones logísticas con C#, .NET Core, ASP.NET y SQL Server.</li><li>Servicios web de consulta de incidencias con respuestas JSON y soporte multidioma.</li><li>Revisión de consultas SQL y procedimientos almacenados para optimizar el acceso a datos.</li></ul>
+              <div class="tags" aria-label="Tecnologías en GLS"><span>C#</span><span>.NET Core</span><span>ASP.NET</span><span>SQL Server</span></div>
             </div>
-          </div>
+          </article>
+          <article class="experience-item">
+            <div class="experience-meta"><p class="date">Ago. 2022 — Feb. 2025</p><p>Ecuador</p></div>
+            <div class="experience-content"><h3>Equifax Ecuador</h3><p class="job-role">Analytics Delivery — Intermediate</p>
+              <ul><li>Coordinación del equipo de desarrollo, planificación de entregas y gestión de dependencias entre áreas.</li><li>Soluciones de decisión con Interconnect y Portal Digital, y microservicios Python.</li><li>Automatización con ETL y SSIS; gestión del código en GitHub dentro de equipos Scrum.</li><li>Coordinación de UAT y despliegues hasta la estabilización y conformidad del cliente.</li></ul>
+              <div class="tags" aria-label="Tecnologías en Equifax"><span>Python</span><span>SSIS</span><span>ETL</span><span>Scrum</span><span>UAT</span></div>
+            </div>
+          </article>
+          <article class="experience-item">
+            <div class="experience-meta"><p class="date">Jul. 2017 — Jul. 2022</p><p>Ecuador · Proyectos para Ecuador y Perú</p></div>
+            <div class="experience-content"><h3>APLIOS</h3><p class="job-role">Business Analyst — IT · Contractor para Equifax Ecuador</p>
+              <ul><li>Análisis de requisitos para clientes financieros y coordinación con TI, arquitectura, seguridad y negocio.</li><li>Microservicios Python, servicios SOAP con C#, aplicaciones VB.NET e integración de datos con SSIS.</li><li>Configuración de recursos en GCP y AWS para desarrollo y despliegue; documentación técnica y soporte a clientes.</li></ul>
+              <div class="tags" aria-label="Tecnologías en APLIOS"><span>Python</span><span>C# / VB.NET</span><span>SSIS</span><span>GCP</span><span>AWS</span></div>
+            </div>
+          </article>
+          <article class="experience-item">
+            <div class="experience-meta"><p class="date">Feb. 2016 — Jul. 2017</p><p>Ecuador</p></div>
+            <div class="experience-content"><h3>CSTI</h3><p class="job-role">Business Analyst &amp; Developer · Contractor para Equifax Ecuador</p><ul><li>Análisis funcional y técnico, aplicaciones .NET, servicios SOAP con C# y procesos ETL con SSIS y SQL Server.</li><li>Automatización de flujos de trabajo, soporte en producción y control de versiones con SVN.</li></ul></div>
+          </article>
         </div>
+        <details class="earlier-experience glass">
+          <summary>Experiencia anterior <span>2013 — 2015</span></summary>
+          <div class="earlier-grid"><article><p class="date">Oct. 2014 — Oct. 2015</p><h3>Grupo Hanaska</h3><p class="job-role">Analyst &amp; Developer · Ecuador</p><p>Desarrollo y mantenimiento frontend y backend con .NET y SQL Server; análisis de requisitos, automatización y soporte.</p></article><article><p class="date">Oct. 2013 — Oct. 2014</p><h3>Importadora Madoba</h3><p class="job-role">Analyst &amp; Developer · Ecuador</p><p>Desarrollo con VB.NET, ASPX y Java bajo arquitectura MVC; bases de datos, planificación y capacitación a usuarios.</p></article></div>
+        </details>
       </section>
-
-      <section id="proyectos" class="mx-auto max-w-6xl scroll-mt-28 px-6 py-24 lg:px-8 lg:py-32">
-        <div class="reveal flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-500">02 / Proyectos</p>
-            <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Ideas en construcción.</h2>
-          </div>
-          <p class="max-w-sm text-sm leading-6 text-muted sm:text-right">Una selección provisional de proyectos que mostrará mi forma de pensar, construir y aprender.</p>
-        </div>
-
-        <div class="mt-12 grid gap-5 md:grid-cols-3">
-          <article class="reveal group glass flex min-h-[22rem] flex-col rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-indigo-400/60 hover:shadow-xl hover:shadow-indigo-950/10 dark:hover:shadow-black/25" style="transition-delay: 100ms">
-            <div class="flex items-center justify-between"><span class="rounded-lg bg-indigo-500/10 px-2.5 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-300">01</span><span class="text-xs text-muted">Placeholder</span></div>
-            <div class="mt-8 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/20 to-cyan-400/20 text-indigo-500 dark:text-indigo-300"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.64 5.64l2.12 2.12M16.24 16.24l2.12 2.12M5.64 18.36l2.12-2.12M16.24 7.76l2.12-2.12"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
-            <h3 class="mt-6 text-xl font-bold">Proyecto de IA</h3>
-            <p class="mt-3 flex-1 text-sm leading-6 text-muted">Espacio reservado para presentar una solución basada en inteligencia artificial.</p>
-            <div class="mt-6 flex flex-wrap gap-2 text-xs text-muted"><span class="rounded-md bg-slate-100 px-2 py-1 dark:bg-slate-800">IA</span><span class="rounded-md bg-slate-100 px-2 py-1 dark:bg-slate-800">Python</span></div>
-            <a href="#contacto" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-indigo-500 transition group-hover:gap-3 dark:text-indigo-300">Próximamente <span aria-hidden="true">→</span></a>
+      <section class="section container" id="competencias" aria-labelledby="skills-title">
+        <div class="section-top"><div class="section-heading"><p class="eyebrow">03 / Competencias</p><h2 id="skills-title">Herramientas para cada etapa.</h2></div><p class="section-intro">Desde las APIs y el acceso a datos hasta la integración, el despliegue y el soporte.</p></div>
+        <dl class="skills-list">
+          <div><dt><span aria-hidden="true">01</span>Backend y APIs</dt><dd>Python · Django REST Framework · C# · ASP.NET Core · Entity Framework · VB.NET · REST · SOAP</dd></div>
+          <div><dt><span aria-hidden="true">02</span>Frontend</dt><dd>React · TypeScript · JavaScript · HTML5</dd></div>
+          <div><dt><span aria-hidden="true">03</span>Bases de datos y ETL</dt><dd>SQL Server · PostgreSQL · MySQL · SSIS · Analysis Services (SSAS) · Reporting Services (SSRS)</dd></div>
+          <div><dt><span aria-hidden="true">04</span>Arquitectura y cloud</dt><dd>Microservicios · MVC · Integración de sistemas · GCP · AWS</dd></div>
+          <div><dt><span aria-hidden="true">05</span>Ingeniería y gestión</dt><dd>Git · GitHub · Scrum · Coordinación técnica · Documentación · UAT · Soporte en producción</dd></div>
+        </dl>
+      </section>
+      <section class="section container" id="proyectos" aria-labelledby="projects-title">
+        <div class="section-top"><div class="section-heading"><p class="eyebrow">04 / Proyectos personales</p><h2 id="projects-title">Del problema al producto.</h2></div><p class="section-intro">Dos proyectos en desarrollo donde aplico mi experiencia en backend, datos e integración.</p></div>
+        <div class="projects-grid">
+          <article class="project-card glass">
+            <div class="project-top"><span class="project-number">01 / Gestión</span><span class="badge">En desarrollo</span></div>
+            <div class="project-visual restaurant-visual" aria-hidden="true"><span class="visual-label">Restaurantes</span><div class="system-flow"><span>Empresa</span><i>↓</i><span>Sucursales</span><i>↓</i><div><span>Inventario</span><span>Punto de venta</span></div></div></div>
+            <h3>Sistema de gestión para restaurantes</h3><p>Gestión multiempresa y de sucursales, inventario, mesas, punto de venta y usuarios en una aplicación con backend y frontend independientes.</p>
+            <div class="tags"><span>Django REST Framework</span><span>PostgreSQL</span><span>React</span></div>
+            <a class="text-link" href="mailto:williamrodriguezp@outlook.com?subject=Consulta%20sobre%20el%20sistema%20para%20restaurantes">Consultar sobre el proyecto <span aria-hidden="true">↗</span></a>
           </article>
-
-          <article class="reveal group glass flex min-h-[22rem] flex-col rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-indigo-400/60 hover:shadow-xl hover:shadow-indigo-950/10 dark:hover:shadow-black/25" style="transition-delay: 180ms">
-            <div class="flex items-center justify-between"><span class="rounded-lg bg-cyan-500/10 px-2.5 py-1 text-xs font-semibold text-cyan-600 dark:text-cyan-300">02</span><span class="text-xs text-muted">Placeholder</span></div>
-            <div class="mt-8 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400/20 to-indigo-500/20 text-cyan-600 dark:text-cyan-300"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M7 8h10M7 12h4M7 16h7"></path></svg></div>
-            <h3 class="mt-6 text-xl font-bold">Aplicación web</h3>
-            <p class="mt-3 flex-1 text-sm leading-6 text-muted">Espacio reservado para mostrar una aplicación web enfocada en una necesidad concreta.</p>
-            <div class="mt-6 flex flex-wrap gap-2 text-xs text-muted"><span class="rounded-md bg-slate-100 px-2 py-1 dark:bg-slate-800">HTML</span><span class="rounded-md bg-slate-100 px-2 py-1 dark:bg-slate-800">JavaScript</span></div>
-            <a href="#contacto" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-indigo-500 transition group-hover:gap-3 dark:text-indigo-300">Próximamente <span aria-hidden="true">→</span></a>
-          </article>
-
-          <article class="reveal group glass flex min-h-[22rem] flex-col rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-indigo-400/60 hover:shadow-xl hover:shadow-indigo-950/10 dark:hover:shadow-black/25" style="transition-delay: 260ms">
-            <div class="flex items-center justify-between"><span class="rounded-lg bg-violet-500/10 px-2.5 py-1 text-xs font-semibold text-violet-600 dark:text-violet-300">03</span><span class="text-xs text-muted">Placeholder</span></div>
-            <div class="mt-8 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/20 to-indigo-500/20 text-violet-600 dark:text-violet-300"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 19V5M4 19h16"></path><path d="m7 15 3-3 3 2 5-6"></path><circle cx="7" cy="15" r="1"></circle><circle cx="10" cy="12" r="1"></circle><circle cx="13" cy="14" r="1"></circle><circle cx="18" cy="8" r="1"></circle></svg></div>
-            <h3 class="mt-6 text-xl font-bold">Solución de datos</h3>
-            <p class="mt-3 flex-1 text-sm leading-6 text-muted">Espacio reservado para un proyecto de análisis, visualización o automatización de datos.</p>
-            <div class="mt-6 flex flex-wrap gap-2 text-xs text-muted"><span class="rounded-md bg-slate-100 px-2 py-1 dark:bg-slate-800">Datos</span><span class="rounded-md bg-slate-100 px-2 py-1 dark:bg-slate-800">Automatización</span></div>
-            <a href="#contacto" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-indigo-500 transition group-hover:gap-3 dark:text-indigo-300">Próximamente <span aria-hidden="true">→</span></a>
+          <article class="project-card glass">
+            <div class="project-top"><span class="project-number">02 / Integración</span><span class="badge">En desarrollo</span></div>
+            <div class="project-visual invoice-visual" aria-hidden="true"><span class="visual-label">Facturación · Ecuador</span><div class="invoice-flow"><span>XML</span><i>→</i><span>Firma</span><i>→</i><span>SRI</span></div><span class="visual-caption">Facturas · Notas de crédito · RIDE</span></div>
+            <h3>Servicio de facturación electrónica</h3><p>Proyecto independiente para Ecuador: integración de firma electrónica, comunicación con el SRI y seguimiento de facturas y notas de crédito, con documentos XML y RIDE.</p>
+            <div class="tags"><span>Python</span><span>Django REST Framework</span><span>XML</span><span>SRI</span></div>
+            <a class="text-link" href="mailto:williamrodriguezp@outlook.com?subject=Consulta%20sobre%20facturaci%C3%B3n%20electr%C3%B3nica">Consultar sobre el proyecto <span aria-hidden="true">↗</span></a>
           </article>
         </div>
       </section>
-
-      <section id="contacto" class="mx-auto max-w-6xl scroll-mt-28 px-6 py-24 lg:px-8 lg:py-32">
-        <div class="reveal grid overflow-hidden rounded-[2rem] bg-slate-950 text-white shadow-2xl shadow-indigo-950/20 dark:bg-slate-900 md:grid-cols-[0.85fr_1.15fr]">
-          <div class="relative overflow-hidden p-8 sm:p-12 lg:p-14">
-            <div class="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-indigo-500/30 blur-3xl"></div>
-            <div class="relative">
-              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">03 / Contacto</p>
-              <h2 class="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">¿Construimos algo juntos?</h2>
-              <p class="mt-5 max-w-md leading-7 text-slate-300">Si tienes una idea, una oportunidad o simplemente quieres conversar sobre tecnología e IA, escríbeme.</p>
-              <div class="mt-10 space-y-4 text-sm">
-                <a href="https://www.linkedin.com/in/william-rodriguez-7b925073" target="_blank" rel="noreferrer" class="flex items-center gap-3 text-slate-200 transition hover:text-white"><span class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.5 8.5A2.25 2.25 0 1 0 6.5 4a2.25 2.25 0 0 0 0 4.5ZM4.5 20h4V10h-4v10ZM11 10v10h4v-5.25c0-1.45.28-2.9 2.1-2.9 1.8 0 1.9 1.7 1.9 3V20h4v-5.9c0-2.9-.62-5.12-4-5.12-1.63 0-2.72.9-3.17 1.75h-.05V10H11Z"></path></svg></span> LinkedIn</a>
-                <a href="#contact-form" class="flex items-center gap-3 text-slate-200 transition hover:text-white"><span class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span> Escríbeme por el formulario</a>
-              </div>
-            </div>
+      <section class="section container education" id="formacion" aria-labelledby="education-title">
+        <div class="section-heading"><p class="eyebrow">05 / Formación</p><h2 id="education-title">Aprendizaje continuo.</h2></div>
+        <div class="education-content"><article><p class="date">2019 — 2024</p><h3>Ingeniería en Tecnologías de la Información</h3><p>Universidad Técnica Particular de Loja · Ecuador</p></article><div class="education-extra"><div><h3>Formación complementaria</h3><p>AWS y CI/CD, React, Django REST Framework, inteligencia artificial y PySpark.</p></div><div><h3>Idiomas</h3><p>Español nativo.<br />Inglés en formación.</p></div></div></div>
+      </section>
+      <section class="section container" id="contacto" aria-labelledby="contact-title">
+        <div class="contact-panel">
+          <div class="contact-copy">
+            <p class="eyebrow">06 / Contacto</p><h2 id="contact-title">Hablemos de tu<br />próximo proyecto.</h2><p>Para oportunidades profesionales, desarrollo de software o integración de sistemas, puedes escribirme por correo o por el formulario.</p>
+            <address class="contact-links"><a href="mailto:williamrodriguezp@outlook.com"><span class="contact-icon" aria-hidden="true">@</span><span><small>Correo electrónico</small>williamrodriguezp@outlook.com</span></a><a href="tel:+34695405122"><span class="contact-icon" aria-hidden="true">↗</span><span><small>Teléfono</small>+34 695 405 122</span></a><p><span class="contact-icon" aria-hidden="true">⌖</span><span><small>Ubicación</small>Segovia, España</span></p></address>
+            <div class="social-links"><a href="https://www.linkedin.com/in/william-rodriguez-7b925073" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (abre en otra pestaña)</span></a><a href="https://github.com/warodriguez18" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span class="sr-only"> (abre en otra pestaña)</span></a></div>
           </div>
-
-          <div class="bg-white p-8 text-slate-950 sm:p-12 lg:p-14 dark:bg-slate-950 dark:text-white">
-            <form id="contact-form" action="https://formspree.io/f/xeaqnqpy" method="POST" class="space-y-5" novalidate>
+          <div class="contact-form-panel">
+            <form id="contact-form" action="https://formspree.io/f/xeaqnqpy" method="POST" aria-describedby="form-help">
               <input type="hidden" name="_subject" value="Nuevo mensaje desde el portfolio de William Rodriguez" />
-              <div class="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label for="name" class="text-sm font-semibold">Nombre</label>
-                  <input id="name" name="name" type="text" autocomplete="name" required placeholder="Tu nombre" class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 dark:border-slate-800 dark:bg-slate-900 dark:placeholder:text-slate-600" />
-                </div>
-                <div>
-                  <label for="email" class="text-sm font-semibold">Correo</label>
-                  <input id="email" name="email" type="email" autocomplete="email" required placeholder="tu@correo.com" class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 dark:border-slate-800 dark:bg-slate-900 dark:placeholder:text-slate-600" />
-                </div>
-              </div>
-              <div>
-                <label for="message" class="text-sm font-semibold">Mensaje</label>
-                <textarea id="message" name="message" rows="5" required placeholder="Cuéntame brevemente en qué estás trabajando..." class="mt-2 w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 dark:border-slate-800 dark:bg-slate-900 dark:placeholder:text-slate-600"></textarea>
-              </div>
-              <button id="form-submit" type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 focus:ring-offset-2 disabled:cursor-wait disabled:opacity-70 dark:focus:ring-offset-slate-950">Enviar mensaje <span aria-hidden="true">→</span></button>
-              <p id="form-note" aria-live="polite" class="text-center text-xs leading-5 text-slate-500 dark:text-slate-400">Tus datos se enviarán de forma segura mediante Formspree.</p>
+              <h3>Envíame un mensaje</h3><p id="form-help" class="form-help">Todos los campos son obligatorios.</p>
+              <div class="form-row"><div class="form-field"><label for="name">Nombre</label><input id="name" name="name" type="text" autocomplete="name" required maxlength="120" placeholder="Tu nombre" /></div><div class="form-field"><label for="email">Correo</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="tu@correo.com" /></div></div>
+              <div class="form-field"><label for="message">Mensaje</label><textarea id="message" name="message" rows="5" required maxlength="5000" placeholder="Cuéntame qué necesitas o en qué estás trabajando…"></textarea></div>
+              <button class="button button-accent" id="form-submit" type="submit"><span>Enviar mensaje</span><span aria-hidden="true">→</span></button><p id="form-note" class="form-note" role="status" aria-live="polite" aria-atomic="true">El formulario envía tu nombre, correo y mensaje a través de Formspree.</p>
             </form>
           </div>
         </div>
       </section>
     </main>
-
-    <footer class="mx-auto flex max-w-6xl flex-col gap-3 px-6 pb-8 pt-4 text-sm text-muted sm:flex-row sm:items-center sm:justify-between lg:px-8">
-      <p>© <span id="year"></span> William Adrian Rodriguez Pantoja.</p>
-      <p>Diseñado para aprender, crear y conectar.</p>
-    </footer>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      const revealItems = document.querySelectorAll(".reveal");
-      const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12 }
-      );
-
-      revealItems.forEach((item) => revealObserver.observe(item));
-
-      document.getElementById("contact-form").addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const form = event.currentTarget;
-        const note = document.getElementById("form-note");
-        const submitButton = document.getElementById("form-submit");
-        if (!form.checkValidity()) {
-          form.reportValidity();
-          return;
-        }
-
-        submitButton.disabled = true;
-        submitButton.firstChild.textContent = " Enviando ";
-        note.textContent = "Enviando tu mensaje...";
-
-        try {
-          const response = await fetch(form.action, {
-            method: "POST",
-            body: new FormData(form),
-            headers: { Accept: "application/json" },
-          });
-
-          if (!response.ok) throw new Error("Formspree request failed");
-
-          form.reset();
-          note.textContent = "Mensaje enviado correctamente. Gracias por escribirme.";
-          note.classList.remove("text-slate-500", "dark:text-slate-400");
-          note.classList.add("text-emerald-600", "dark:text-emerald-300");
-        } catch (error) {
-          note.textContent = "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por LinkedIn.";
-          note.classList.remove("text-slate-500", "dark:text-slate-400");
-          note.classList.add("text-rose-600", "dark:text-rose-300");
-        } finally {
-          submitButton.disabled = false;
-          submitButton.firstChild.textContent = " Enviar mensaje ";
-        }
-      });
-    </script>
+    <footer class="site-footer container"><p>© <span id="year">2026</span> William Rodriguez Pantoja.</p><a href="#inicio">Volver al inicio <span aria-hidden="true">↑</span></a></footer>
   </body>
 </html>
