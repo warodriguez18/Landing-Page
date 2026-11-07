@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="228" viewBox="0 0 760 228" role="img" aria-labelledby="title desc">
+  <title id="title">Diseño de integración fiscal</title>
+  <desc id="desc">Grill TPV: Solicita la emisión. Puerto fiscal: Separa la integración. VERI*FACTU: Devuelve número y QR. El servicio fiscal tramita el envío posterior a la AEAT.</desc>
+  <rect width="760" height="228" fill="#edf3fb"/>
+  <g font-family="system-ui, sans-serif">
+    <text x="26" y="43" fill="#203149" font-size="23" font-weight="700">Diseño de integración fiscal</text>
+    <path d="M226 113h52m-8-6 8 6-8 6m212-6h52m-8-6 8 6-8 6" fill="none" stroke="#356cb2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="26" y="70" width="200" height="86" fill="#fff" stroke="#7d8fa7"/>
+    <text x="41" y="107" fill="#203149" font-size="22" font-weight="700">Grill TPV</text>
+    <text x="41" y="132" fill="#40516a" font-size="15">Solicita la emisión</text>
+    <rect x="280" y="70" width="200" height="86" fill="#fff" stroke="#7d8fa7"/>
+    <text x="295" y="107" fill="#203149" font-size="22" font-weight="700">Puerto fiscal</text>
+    <text x="295" y="132" fill="#40516a" font-size="15">Separa la integración</text>
+    <rect x="534" y="70" width="200" height="86" fill="#fff" stroke="#7d8fa7"/>
+    <text x="549" y="107" fill="#203149" font-size="22" font-weight="700">VERI*FACTU</text>
+    <text x="549" y="132" fill="#40516a" font-size="15">Devuelve número y QR</text>
+    <text x="26" y="194" fill="#40516a" font-size="15">El servicio fiscal tramita el envío posterior a la AEAT.</text>
+  </g>
+</svg>

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="William Rodriguez Pantoja, Software Engineer en Segovia. 13 años de experiencia con Python, .NET, APIs y automatización en finanzas y logística."
+      content="William Rodriguez Pantoja, Software Engineer en Segovia. Desarrollo backend y full stack con Python, .NET y Go. Proyectos de hostelería, comercio y facturación electrónica."
     />
-    <meta name="theme-color" content="#f8fafc" />
+    <meta name="theme-color" content="#183b66" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
     <meta
@@ -16,7 +16,7 @@
     />
     <meta
       property="og:description"
-      content="Desarrollo full stack y backend con Python y .NET. Integración de sistemas, APIs y automatización de datos."
+      content="Portfolio de ingeniería de software. Proyectos de hostelería, comercio e integración fiscal en Ecuador y España."
     />
     <meta
       property="og:url"
@@ -38,16 +38,18 @@
         const dark = theme === "dark" || (theme !== "light" && prefersDark);
         document.documentElement.classList.toggle("dark", dark);
         document.querySelector('meta[name="theme-color"]').content = dark
-          ? "#070b14"
-          : "#f8fafc";
+          ? "#0e1118"
+          : "#183b66";
       })();
     </script>
+    <script src="./assets/vendor/gsap.min.js" defer></script>
+    <script src="./assets/vendor/ScrollTrigger.min.js" defer></script>
     <script src="./assets/main.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header">
-      <nav class="navigation glass" aria-label="Navegación principal">
+      <nav class="navigation" aria-label="Navegación principal">
         <a
           class="brand"
           href="#inicio"
@@ -108,75 +110,37 @@
           </button>
         </div>
         <div class="nav-links" id="nav-links">
-          <a href="#sobre-mi">Sobre mí</a><a href="#experiencia">Experiencia</a
-          ><a href="#competencias">Tecnologías</a
-          ><a href="#proyectos">Proyectos</a><a href="#contacto">Contacto</a>
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#experiencia">Trayectoria</a>
+          <a href="#competencias">Tecnologías</a>
+          <a href="#contacto">Contacto</a>
         </div>
       </nav>
     </header>
     <main id="contenido" tabindex="-1">
-      <section class="hero container" id="inicio" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow hero-eyebrow">
-            <span class="status-dot" aria-hidden="true"></span> Software
-            Engineer · Segovia, España
-          </p>
-          <h1 id="hero-title">
-            William<br /><span class="gradient-text">Rodriguez Pantoja.</span>
-          </h1>
-          <p class="hero-role">
-            Full stack y backend.<br />Python, .NET e integración de sistemas.
-          </p>
-          <p class="hero-description">
-            13 años de experiencia desarrollando software y automatizando
-            procesos en los sectores financiero y logístico. Del análisis de
-            requisitos al soporte en producción.
-          </p>
-          <div class="hero-buttons">
-            <a class="button button-primary" href="#proyectos"
-              >Explorar proyectos <span aria-hidden="true">↗</span></a
-            ><a class="button button-secondary" href="#contacto"
-              >Hablemos <span aria-hidden="true">→</span></a
-            >
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow hero-eyebrow">Software Engineer · Segovia, España</p>
+            <h1 id="hero-title">William<br />Rodriguez Pantoja<span>.</span></h1>
+            <p class="hero-role">Full-Stack Developer en GLS Spain</p>
+            <p class="hero-description">
+              13 años desarrollando software, integrando sistemas y automatizando
+              procesos en finanzas y logística.
+            </p>
+            <a class="hero-link" href="#proyectos">Ver proyectos <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="hero-facts" aria-label="Áreas de experiencia">
-            <span>APIs y microservicios</span><span>Datos y ETL</span
-            ><span>Coordinación técnica</span>
-          </div>
+          <figure class="hero-scene">
+            <picture class="hero-photo">
+              <source media="(max-width: 760px)" srcset="./assets/projects/portada-tecnologia-movil.webp"
+                width="780" height="574" />
+              <img src="./assets/projects/portada-tecnologia.webp" width="1200" height="963"
+                alt="" fetchpriority="high" />
+            </picture>
+            <figcaption>Desarrollo · Diseño · Arquitectura de software</figcaption>
+          </figure>
         </div>
-        <aside
-          class="profile-panel glass"
-          aria-label="Perfil profesional resumido"
-        >
-          <div class="panel-heading">
-            <span>Perfil profesional</span><span class="panel-number">01</span>
-          </div>
-          <div class="profile-monogram" aria-hidden="true">
-            WR<span>↗</span>
-          </div>
-          <h2>Ingeniería aplicada<br />a problemas reales.</h2>
-          <p>
-            Ingeniero en Tecnologías de la Información. Desarrollo, integración
-            y automatización.
-          </p>
-          <dl class="profile-details">
-            <div>
-              <dt>Actualmente</dt>
-              <dd>Full-Stack Developer <span>GLS Spain · En remoto</span></dd>
-            </div>
-            <div>
-              <dt>Experiencia</dt>
-              <dd>Finanzas y logística</dd>
-            </div>
-            <div>
-              <dt>En proyectos personales</dt>
-              <dd>Desarrollo asistido por IA</dd>
-            </div>
-          </dl>
-          <a class="text-link" href="#experiencia"
-            >Conocer mi trayectoria <span aria-hidden="true">→</span></a
-          >
-        </aside>
       </section>
       <section
         class="section container about"
@@ -184,7 +148,7 @@
         aria-labelledby="about-title"
       >
         <div class="section-heading">
-          <p class="eyebrow">01 / Sobre mí</p>
+          <p class="eyebrow">Sobre mí</p>
           <h2 id="about-title">
             Conectar sistemas.<br />Simplificar procesos.
           </h2>
@@ -192,8 +156,8 @@
         <div class="about-copy">
           <p>
             Mi trabajo combina desarrollo de software, integración de sistemas y
-            automatización de datos. He participado en proyectos para los
-            sectores financiero y logístico con Python, .NET y procesos ETL.
+            automatización de datos. En finanzas y logística he trabajado con
+            Python, .NET y procesos ETL.
           </p>
           <p>
             Tengo experiencia en coordinación técnica de equipos: análisis de
@@ -216,6 +180,161 @@
           </div>
         </div>
       </section>
+      <section class="section container projects" id="proyectos" aria-labelledby="projects-title">
+        <div class="section-top">
+          <div class="section-heading">
+            <h2 id="projects-title">Proyectos</h2>
+          </div>
+          <div>
+            <p class="section-intro">Sistemas para hostelería, comercio y facturación. Cada caso muestra el producto y las decisiones de ingeniería que lo sostienen.</p>
+            <a class="text-link project-index-link" href="#indice-proyectos">Ir al índice <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+
+        <div class="project-stage" aria-hidden="true">
+          <div class="project-track">
+            <div class="project-slide slide-grill">
+              <div class="slide-copy">
+                <p class="eyebrow">Hostelería · Ecuador</p>
+                <p class="slide-title">Grill<br />Ecuador.</p>
+                <p>El recorrido de una comanda, de la mesa a la cocina.</p>
+              </div>
+              <div class="slide-visual order-visual">
+                <p class="flow-label">Recorrido de una comanda</p>
+                <div class="order-flow">
+                  <span class="flow-node"><small>01 · CAPTURA</small>TPV</span>
+                  <span class="flow-edge"></span>
+                  <span class="flow-node"><small>02 · PROCESO</small>API</span>
+                  <span class="flow-edge"></span>
+                  <span class="flow-node"><small>03 · SALIDA</small>Cocina</span>
+                </div>
+                <p class="flow-note">Puesto de venta · Servicio central · Estaciones de preparación</p>
+              </div>
+            </div>
+            <div class="project-slide slide-billing">
+              <div class="slide-copy">
+                <p class="eyebrow">Integración fiscal · Ecuador</p>
+                <p class="slide-title">Facturación<br />electrónica.</p>
+                <p>Del documento firmado al seguimiento de su autorización.</p>
+              </div>
+              <div class="slide-visual billing-visual">
+                <p class="flow-label">Emisión de un comprobante</p>
+                <div class="order-flow">
+                  <span class="flow-node"><small>DOCUMENTO</small>XML</span>
+                  <span class="flow-edge"></span>
+                  <span class="flow-node"><small>VALIDACIÓN</small>Firma</span>
+                  <span class="flow-edge"></span>
+                  <span class="flow-node"><small>AUTORIZACIÓN</small>SRI</span>
+                </div>
+                <p class="flow-note">Facturas · Notas de crédito · Retenciones</p>
+              </div>
+            </div>
+            <div class="project-slide slide-menu">
+              <div class="slide-copy">
+                <p class="eyebrow">Diseño web · Hostelería</p>
+                <p class="slide-title">Carta<br />digital.</p>
+                <p>Una web por sucursal, conectada al catálogo de Grill.</p>
+              </div>
+              <figure class="slide-visual menu-visual">
+                <img src="./assets/projects/carta-grill.webp" width="1200" height="772" loading="lazy" decoding="async" alt="" />
+                <figcaption>Propuesta visual · Escritorio y móvil</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="project-index-title" id="indice-proyectos" tabindex="-1">Todos los proyectos</h3>
+        <div class="project-index">
+          <article class="project-entry" id="grill-ecuador">
+            <div class="project-identity">
+              <p class="project-meta">Hostelería · Ecuador</p>
+              <img class="project-logo" src="./assets/projects/grill-restaurant-logo.png"
+                width="560" height="160" loading="lazy" decoding="async" alt="Grill Restaurant" />
+            </div>
+            <div>
+              <h4>Grill Ecuador</h4>
+              <p>Gestión multiempresa de restaurantes. Conecta inventario, recetas, comandas, cocina, caja y TPV en una plataforma con acceso por sucursal.</p>
+              <p class="project-stack">Python · Django REST Framework · React · TypeScript · PostgreSQL · Supabase Realtime</p>
+              <details class="project-detail">
+                <summary>Ver arquitectura</summary>
+                <div class="project-detail-body">
+                  <img src="./assets/projects/grill-ecuador.svg" width="760" height="228" loading="lazy" decoding="async" alt="" />
+                  <p>El TPV registra la comanda en la API, que guarda el estado en PostgreSQL. Supabase Realtime distribuye cambios a la aplicación de cocina. Un puente recupera de la API los trabajos de impresión y los envía a las impresoras.</p>
+                  <p class="project-source">Vista simplificada a partir de Archify.</p>
+                </div>
+              </details>
+            </div>
+          </article>
+          <article class="project-entry" id="facturacion-ecuador">
+            <p class="project-meta">Integración fiscal · Ecuador</p>
+            <div>
+              <h4>Facturación electrónica</h4>
+              <p>Servicio multiempresa para emitir facturas, notas de crédito y retenciones. Firma XML y conserva el historial de procesamiento ante el SRI. Validación de aceptación en pruebas pendiente.</p>
+              <p class="project-stack">Python · Django REST Framework · PostgreSQL · XML · SOAP</p>
+              <details class="project-detail">
+                <summary>Ver arquitectura</summary>
+                <div class="project-detail-body">
+                  <img src="./assets/projects/facturacion-ecuador.svg" width="760" height="228" loading="lazy" decoding="async" alt="" />
+                  <p>La API genera y firma el XML. PostgreSQL conserva el estado de los documentos y un almacén privado conserva sus XML. El worker tramita la recepción y autorización ante el SRI y actualiza el estado.</p>
+                  <p class="project-source">Vista simplificada a partir de Archify.</p>
+                </div>
+              </details>
+            </div>
+          </article>
+          <article class="project-entry" id="carta-grill">
+            <p class="project-meta">Diseño web · Hostelería</p>
+            <div>
+              <h4>Carta digital Grill</h4>
+              <p>Sitio público por sucursal con fotos, carta y catálogo conectado a Grill. La carta está desplegada. El flujo de reservas se ha verificado en local.</p>
+              <p class="project-stack">Astro · Preact · TypeScript · Cloudflare Workers · OpenAPI</p>
+              <details class="project-detail">
+                <summary>Ver diseño</summary>
+                <div class="project-detail-body">
+                  <img src="./assets/projects/carta-grill.webp" width="1200" height="772" loading="lazy" decoding="async"
+                    alt="Propuesta de carta digital en escritorio y móvil, con fotografía del plato, precio y acceso a reservas." />
+                  <p>Exploración de portada y transición entre platos destacados, con composiciones diferenciadas para escritorio y móvil.</p>
+                </div>
+              </details>
+            </div>
+          </article>
+          <article class="project-entry" id="modern-store">
+            <div class="project-identity">
+              <p class="project-meta">Comercio · Ecuador</p>
+              <img class="project-logo" src="./assets/projects/modern-store-logo.png"
+                width="768" height="160" loading="lazy" decoding="async" alt="" />
+            </div>
+            <div>
+              <h4>Modern Store</h4>
+              <p>Inventario por bodega, catálogo con variantes y venta con escáner. El TPV reúne venta, caja y facturación electrónica. Dispone de un entorno de demostración.</p>
+              <p class="project-stack">Django REST Framework · React · TypeScript · PostgreSQL · Tailwind CSS · shadcn/ui</p>
+            </div>
+          </article>
+          <article class="project-entry" id="grill-espana">
+            <p class="project-meta">Hostelería · España</p>
+            <div>
+              <h4>Grill España</h4>
+              <p>Adaptación de Grill para operar en euros y preparar la emisión de facturas simplificadas, ordinarias y rectificativas. Integración fiscal en desarrollo.</p>
+              <p class="project-stack">Django REST Framework · React · TypeScript · PostgreSQL · OpenAPI</p>
+              <details class="project-detail">
+                <summary>Ver diseño de integración</summary>
+                <div class="project-detail-body">
+                  <img src="./assets/projects/grill-espana.svg" width="760" height="228" loading="lazy" decoding="async" alt="" />
+                  <p>Grill conserva el flujo de venta del TPV. Un puerto fiscal separa la emisión del resto de la operación. La integración prevé que <a class="text-link" href="#verifactu">VERI*FACTU</a> devuelva la numeración y los datos del QR antes de imprimir.</p>
+                  <p class="project-source">Adaptación del mapa de Grill con el diseño fiscal de España.</p>
+                </div>
+              </details>
+            </div>
+          </article>
+          <article class="project-entry" id="verifactu">
+            <p class="project-meta">Integración fiscal · España</p>
+            <div>
+              <h4>VERI*FACTU</h4>
+              <p>Servicio en Go para generar registros de facturación encadenados, devolver los datos del QR al TPV y tramitar el envío a la AEAT. Núcleo implementado y pruebas con la AEAT pendientes.</p>
+              <p class="project-stack">Go · PostgreSQL · XML · XSD · SOAP</p>
+            </div>
+          </article>
+        </div>
+      </section>
       <section
         class="section container"
         id="experiencia"
@@ -223,7 +342,7 @@
       >
         <div class="section-top">
           <div class="section-heading">
-            <p class="eyebrow">02 / Experiencia</p>
+            <p class="eyebrow">Experiencia</p>
             <h2 id="experience-title">De finanzas a logística.</h2>
           </div>
           <p class="section-intro">
@@ -382,25 +501,28 @@
       >
         <div class="section-top">
           <div class="section-heading">
-            <p class="eyebrow">03 / Competencias</p>
+            <p class="eyebrow">Competencias</p>
             <h2 id="skills-title">Herramientas para cada etapa.</h2>
           </div>
           <p class="section-intro">
-            Desde las APIs y el acceso a datos hasta la integración, el
-            despliegue y el soporte.
+            Mi experiencia en APIs, datos y despliegue, junto con el stack de
+            mis proyectos recientes en hostelería, comercio y facturación.
           </p>
         </div>
         <dl class="skills-list">
           <div>
             <dt><span aria-hidden="true">01</span>Backend y APIs</dt>
             <dd>
-              Python · Django REST Framework · C# · ASP.NET Core · Entity
+              Python · Django REST Framework · Go · C# · ASP.NET Core · Entity
               Framework · VB.NET · REST · SOAP
             </dd>
           </div>
           <div>
             <dt><span aria-hidden="true">02</span>Frontend</dt>
-            <dd>React · TypeScript · JavaScript · HTML5</dd>
+            <dd>
+              React · TypeScript · Astro · Preact · Vite · Tailwind CSS ·
+              JavaScript · HTML y CSS · GSAP ScrollTrigger
+            </dd>
           </div>
           <div>
             <dt><span aria-hidden="true">03</span>Bases de datos y ETL</dt>
@@ -411,93 +533,19 @@
           </div>
           <div>
             <dt><span aria-hidden="true">04</span>Arquitectura y cloud</dt>
-            <dd>Microservicios · MVC · Integración de sistemas · GCP · AWS</dd>
+            <dd>
+              Docker · Cloudflare Workers y Pages · Supabase Realtime · OpenAPI ·
+              Microservicios · MVC · GCP · AWS
+            </dd>
           </div>
           <div>
             <dt><span aria-hidden="true">05</span>Ingeniería y gestión</dt>
             <dd>
-              Git · GitHub · Scrum · Coordinación técnica · Documentación · UAT
-              · Soporte en producción
+              Git · GitHub Actions · Playwright · Vitest · Scrum · Coordinación
+              técnica · Documentación · UAT · Soporte en producción
             </dd>
           </div>
         </dl>
-      </section>
-      <section
-        class="section container"
-        id="proyectos"
-        aria-labelledby="projects-title"
-      >
-        <div class="section-top">
-          <div class="section-heading">
-            <p class="eyebrow">04 / Proyectos personales</p>
-            <h2 id="projects-title">Del problema al producto.</h2>
-          </div>
-          <p class="section-intro">
-            Dos proyectos en desarrollo donde aplico mi experiencia en backend,
-            datos e integración.
-          </p>
-        </div>
-        <div class="projects-grid">
-          <article class="project-card glass">
-            <div class="project-top">
-              <span class="project-number">01 / Gestión</span
-              ><span class="badge">En desarrollo</span>
-            </div>
-            <div class="project-visual restaurant-visual" aria-hidden="true">
-              <span class="visual-label">Restaurantes</span>
-              <div class="system-flow">
-                <span>Empresa</span><i>↓</i><span>Sucursales</span><i>↓</i>
-                <div><span>Inventario</span><span>Punto de venta</span></div>
-              </div>
-            </div>
-            <h3>Sistema de gestión para restaurantes</h3>
-            <p>
-              Gestión multiempresa y de sucursales, inventario, mesas, punto de
-              venta y usuarios en una aplicación con backend y frontend
-              independientes.
-            </p>
-            <div class="tags">
-              <span>Django REST Framework</span><span>PostgreSQL</span
-              ><span>React</span>
-            </div>
-            <a
-              class="text-link"
-              href="mailto:williamrodriguezp@outlook.com?subject=Consulta%20sobre%20el%20sistema%20para%20restaurantes"
-              >Consultar sobre el proyecto <span aria-hidden="true">↗</span></a
-            >
-          </article>
-          <article class="project-card glass">
-            <div class="project-top">
-              <span class="project-number">02 / Integración</span
-              ><span class="badge">En desarrollo</span>
-            </div>
-            <div class="project-visual invoice-visual" aria-hidden="true">
-              <span class="visual-label">Facturación · Ecuador</span>
-              <div class="invoice-flow">
-                <span>XML</span><i>→</i><span>Firma</span><i>→</i
-                ><span>SRI</span>
-              </div>
-              <span class="visual-caption"
-                >Facturas · Notas de crédito · RIDE</span
-              >
-            </div>
-            <h3>Servicio de facturación electrónica</h3>
-            <p>
-              Proyecto independiente para Ecuador: integración de firma
-              electrónica, comunicación con el SRI y seguimiento de facturas y
-              notas de crédito, con documentos XML y RIDE.
-            </p>
-            <div class="tags">
-              <span>Python</span><span>Django REST Framework</span
-              ><span>XML</span><span>SRI</span>
-            </div>
-            <a
-              class="text-link"
-              href="mailto:williamrodriguezp@outlook.com?subject=Consulta%20sobre%20facturaci%C3%B3n%20electr%C3%B3nica"
-              >Consultar sobre el proyecto <span aria-hidden="true">↗</span></a
-            >
-          </article>
-        </div>
       </section>
       <section
         class="section container education"
@@ -505,7 +553,7 @@
         aria-labelledby="education-title"
       >
         <div class="section-heading">
-          <p class="eyebrow">05 / Formación</p>
+          <p class="eyebrow">Formación</p>
           <h2 id="education-title">Aprendizaje continuo.</h2>
         </div>
         <div class="education-content">
@@ -536,7 +584,7 @@
       >
         <div class="contact-panel">
           <div class="contact-copy">
-            <p class="eyebrow">06 / Contacto</p>
+            <p class="eyebrow">Contacto</p>
             <h2 id="contact-title">Hablemos de tu<br />próximo proyecto.</h2>
             <p>
               Para oportunidades profesionales, desarrollo de software o

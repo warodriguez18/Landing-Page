@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="228" viewBox="0 0 760 228" role="img" aria-labelledby="title desc">
+  <title id="title">De la emisión a la autorización</title>
+  <desc id="desc">API de emisión: Genera y firma XML. Worker fiscal: Tramita documentos. SRI: Devuelve el estado. El XML y el historial de estados se conservan de forma privada.</desc>
+  <rect width="760" height="228" fill="#edf3fb"/>
+  <g font-family="system-ui, sans-serif">
+    <text x="26" y="43" fill="#203149" font-size="23" font-weight="700">De la emisión a la autorización</text>
+    <path d="M226 113h52m-8-6 8 6-8 6m212-6h52m-8-6 8 6-8 6" fill="none" stroke="#356cb2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="26" y="70" width="200" height="86" fill="#fff" stroke="#7d8fa7"/>
+    <text x="41" y="107" fill="#203149" font-size="22" font-weight="700">API de emisión</text>
+    <text x="41" y="132" fill="#40516a" font-size="15">Genera y firma XML</text>
+    <rect x="280" y="70" width="200" height="86" fill="#fff" stroke="#7d8fa7"/>
+    <text x="295" y="107" fill="#203149" font-size="22" font-weight="700">Worker fiscal</text>
+    <text x="295" y="132" fill="#40516a" font-size="15">Tramita documentos</text>
+    <rect x="534" y="70" width="200" height="86" fill="#fff" stroke="#7d8fa7"/>
+    <text x="549" y="107" fill="#203149" font-size="22" font-weight="700">SRI</text>
+    <text x="549" y="132" fill="#40516a" font-size="15">Devuelve el estado</text>
+    <text x="26" y="194" fill="#40516a" font-size="15">El XML y el historial de estados se conservan de forma privada.</text>
+  </g>
+</svg>

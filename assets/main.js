@@ -13,7 +13,7 @@
     const label = dark ? "Activar modo claro" : "Activar modo oscuro";
     themeButton.setAttribute("aria-label", label);
     themeButton.title = label;
-    document.querySelector('meta[name="theme-color"]').content = dark ? "#070b14" : "#f8fafc";
+    document.querySelector('meta[name="theme-color"]').content = dark ? "#0e1118" : "#183b66";
   }
 
   applyTheme(root.classList.contains("dark"));
@@ -114,5 +114,80 @@
       form.setAttribute("aria-busy", "false");
       submitLabel.textContent = "Enviar mensaje";
     }
+  });
+
+  const { gsap, ScrollTrigger } = window;
+  if (!gsap || !ScrollTrigger) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+  const media = gsap.matchMedia();
+  media.add({
+    motion: "(prefers-reduced-motion: no-preference)",
+    desktop: "(min-width: 900px) and (min-height: 660px) and (pointer: fine)",
+  }, ({ conditions }) => {
+    if (!conditions.motion) return;
+
+    if (conditions.desktop) {
+      gsap.timeline({
+        defaults: { ease: "none" },
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.35,
+        },
+      })
+        .to(".hero-photo img", { yPercent: 4, scale: 1.035 }, 0)
+        .to(".hero-copy", { y: -24 }, 0)
+        .to(".hero-scene figcaption", { y: -40 }, 0);
+    }
+
+    const revealHeading = (heading) => gsap.from(heading, {
+      y: 14,
+      opacity: 0.65,
+      duration: 0.42,
+      ease: "power2.out",
+      scrollTrigger: { trigger: heading, start: "top 92%", once: true },
+    });
+    revealHeading(document.getElementById("about-title"));
+
+    const stage = document.querySelector(".project-stage");
+    if (conditions.desktop) {
+      const track = stage.querySelector(".project-track");
+      const travel = () => track.scrollWidth - stage.clientWidth;
+      stage.classList.add("is-cinematic");
+      gsap.timeline({
+        defaults: { ease: "none" },
+        scrollTrigger: {
+          trigger: stage,
+          start: "center center",
+          end: () => "+=" + Math.round(travel() * 0.64 + window.innerHeight * 0.38),
+          pin: true,
+          anticipatePin: 1,
+          scrub: 0.35,
+          invalidateOnRefresh: true,
+        },
+      })
+        .fromTo(".order-visual .flow-node", { opacity: 0.7, y: 8 }, {
+          opacity: 1, y: 0, duration: 0.2, stagger: 0.09,
+        }, 0)
+        .fromTo(".order-visual .flow-edge", { scaleX: 0 }, {
+          scaleX: 1, duration: 0.13, stagger: 0.09,
+        }, 0.08)
+        .to(track, { x: () => -travel(), duration: 1.25 }, 0.44);
+    }
+
+    gsap.utils.toArray("#experiencia h2, #competencias h2, #contacto h2").forEach(revealHeading);
+
+    const refresh = gsap.delayedCall(0.12, () => ScrollTrigger.refresh()).pause();
+    const scheduleRefresh = (event) => {
+      if (event.target.tagName === "DETAILS") refresh.restart(true);
+    };
+    document.addEventListener("toggle", scheduleRefresh, true);
+
+    return () => {
+      stage.classList.remove("is-cinematic");
+      document.removeEventListener("toggle", scheduleRefresh, true);
+    };
   });
 })();

@@ -1,12 +1,14 @@
 # Portfolio de William Rodriguez Pantoja
 
-Landing estática con experiencia profesional, competencias, proyectos personales, formación y contacto. El contenido se basa en `CV_William_Rodriguez_2026 (1).docx`, proporcionado para esta actualización. Los dos proyectos personales se presentan en desarrollo.
+Landing estática con seis casos de proyecto, experiencia profesional, tecnologías, formación y contacto. Los casos distinguen los productos desplegados, las demostraciones y las integraciones pendientes de validar.
 
 ## Archivos
 
 - `index.html`: contenido, navegación, metadatos y formulario.
-- `assets/styles.css`: diseño adaptable, temas claro/oscuro y estados del formulario.
-- `assets/main.js`: tema, menú móvil, año y envío del formulario.
+- `assets/styles.css`: diseño adaptable, temas claro y oscuro, y estados del formulario.
+- `assets/main.js`: tema, menú móvil, formulario y animación de portada y proyectos.
+- `assets/projects/`: ilustración de portada sobre desarrollo y diseño de aplicaciones, con recorte móvil, más el diseño de la carta digital, los diagramas públicos y los logotipos.
+- `assets/vendor/`: GSAP y ScrollTrigger 3.15.1, copias de los archivos `dist` del [paquete oficial](https://www.npmjs.com/package/gsap) bajo la [licencia estándar de GSAP](https://gsap.com/standard-license/).
 - `assets/favicon.svg`: icono del sitio.
 
 No requiere instalación de dependencias ni compilación. Los recursos usan rutas relativas para funcionar bajo `/Landing-Page/` en GitHub Pages.
@@ -25,10 +27,14 @@ Abrir `http://127.0.0.1:8000/`. Detener el servidor con `Ctrl+C`.
 
 1. Editar las secciones correspondientes de `index.html`. Mantener los identificadores de sección, formulario y controles que usa `assets/main.js`.
 2. Cambiar el diseño en `assets/styles.css` y el comportamiento en `assets/main.js` cuando sea necesario.
-3. Si se cambia el correo, actualizar los enlaces de contacto y las consultas de los proyectos. Si se cambia el repositorio o dominio, actualizar también `og:url`.
-4. Comprobar la página en móvil y escritorio, ambos temas, enlaces internos, correo, teléfono y formulario.
+3. Actualizar el estado y el stack de cada caso a partir de su repositorio. Si cambia el correo o dominio del portfolio, actualizar los enlaces de contacto o `og:url`, respectivamente.
+4. Comprobar la página en móvil y escritorio, ambos temas, movimiento reducido, enlaces internos, correo, teléfono y formulario.
 
-La cifra de 11 años de experiencia y las fechas proceden del CV. Se mantienen como contenido editorial; revisar al actualizar el CV. La formación complementaria no se presenta como certificaciones, ni el inglés como un nivel acreditado.
+Los diagramas de Grill Ecuador y Facturación electrónica se basan en sus carpetas `.archify`. El esquema de Grill España adapta el mapa de Grill al diseño fiscal documentado para España. Los SVG muestran flujos de producto y omiten detalles de infraestructura privada. La imagen de la carta viene de la propuesta «Brasa nocturna» del sitio web de Grill.
+
+La paleta toma los colores de `grill-django/frontend/src/styles/foundation.css`. Los logotipos proceden de las aplicaciones Grill Restaurant y Modern Store y se muestran sobre fondo claro para conservar sus colores.
+
+La galería fija sus tres casos destacados en pantallas amplias con puntero preciso. El índice vertical, el contenido de los diagramas y los controles de la página están disponibles con movimiento reducido, en pantallas pequeñas o si GSAP no carga.
 
 ## Publicar o actualizar en GitHub Pages
 
@@ -45,7 +51,7 @@ Repositorio: [warodriguez18/Landing-Page](https://github.com/warodriguez18/Landi
 2. Añadir únicamente los archivos de la landing y crear un commit:
 
    ```powershell
-   git add index.html assets/styles.css assets/main.js assets/favicon.svg README.md
+   git add index.html assets/styles.css assets/main.js assets/projects/ assets/vendor/ README.md
    git commit -m "Update portfolio content, design and navigation"
    git push origin main
    ```
@@ -65,7 +71,11 @@ Para verificar la entrega real después de publicar, enviar un mensaje propio y 
 
 LinkedIn puede exigir inicio de sesión o bloquear comprobaciones automatizadas. Revisar manualmente que el enlace abra el perfil correcto.
 
-## Verificación de esta actualización
+## Verificación de la landing
+
+El 7 de noviembre de 2026 se comprobó la landing con Chromium y Playwright bajo `/Landing-Page/`. La revisión cubrió diez anchuras entre 320 y 1920 px, los seis casos, las cuatro vistas de arquitectura y diseño, los dos logotipos, los temas, la navegación con teclado, el movimiento reducido y el uso sin JavaScript. Se inspeccionaron la portada en escritorio y móvil y las etapas intermedias de la galería. El formulario se probó con respuestas simuladas de éxito y error.
+
+### Verificación anterior
 
 Comprobaciones realizadas el 2 de octubre de 2026 con Chromium y Playwright:
 
